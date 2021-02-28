@@ -158,10 +158,10 @@ setprompt () {
 	BAT=$color$strt$percent$end$fg[red]%
 # $PR_RED$PR_HBAR$PR_URCORNER\
     PROMPT='$PR_SET_CHARSET$PR_STITLE${(e)PR_TITLEBAR}\
-$PR_RED$PR_ULCORNER$PR_HBAR$PR_RED(\
+$PR_RED$PR_ULCORNER$PR_HBAR( $BAT )$PR_RED$PR_HBAR\
+$PR_RED(\
 $PR_GREEN%$PR_PWDLEN<...<%~%<<\
-$PR_RED)`rvm_prompt_info || rbenv_prompt_info`$PR_RED$PR_HBAR$PR_HBAR${(e)PR_FILLBAR}$PR_HBAR\
-$PR_HBAR$PR_HBAR$PR_HBAR$PR_HBAR$PR_HBAR$PR_HBAR$PR_HBAR( $BAT )\
+$PR_RED)`rvm_prompt_info || rbenv_prompt_info`$PR_RED\
 
 $PR_RED$PR_LLCORNER$PR_RED$PR_HBAR(%h) [\
 $PR_LIGHT_BLUE%{$reset_color%}`git_prompt_info``git_prompt_status`$PR_RED]$PR_RED$PR_HBAR\
