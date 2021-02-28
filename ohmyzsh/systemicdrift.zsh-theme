@@ -148,7 +148,7 @@ setprompt () {
 		color=$color_red;
 	fi
     end="%%  "
-    strt=" "
+    strt=""
     if [ $percent -le 99 ] ; then
         strt+=" "
     fi
