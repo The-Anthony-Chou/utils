@@ -133,7 +133,7 @@ setprompt () {
 	#    $PR_LIGHT_BLUE%{$reset_color%}`git_prompt_info``git_prompt_status`$PR_RED]$PR_RED$PR_HBAR\
 	# $PR_RED%(!.%SROOT%s.%n)$PR_RED@$PR_GREEN%m:%l\
 	charge=$(battery)
-	# percent=${charge%.*}
+	charge=${charge%.*}
     percent=$((charge - 0))
 	color_green="%{$fg[green]%}"
 	color_yellow="%{$fg[yellow]%}"
