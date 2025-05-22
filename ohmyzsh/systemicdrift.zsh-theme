@@ -132,33 +132,39 @@ setprompt () {
     # Finally, the prompt.
 	#    $PR_LIGHT_BLUE%{$reset_color%}`git_prompt_info``git_prompt_status`$PR_RED]$PR_RED$PR_HBAR\
 	# $PR_RED%(!.%SROOT%s.%n)$PR_RED@$PR_GREEN%m:%l\
-	charge=$(battery)
-	charge=${charge%.*}
-    percent=$((charge - 0))
-	color_green="%{$fg[green]%}"
-	color_yellow="%{$fg[yellow]%}"
-	color_red="%{$fg[red]%}"
-	color_reset="%{$reset_color%}"
+	# charge=$(battery)
+	# charge=${charge%.*}
+    # percent=$((charge - 0))
+    percent=${$(battery)}
+    BAT=""
+    if [[ "$percent" != "?" || -z "$percent" ]]; then
+        color_green="%{$fg[green]%}"
+        color_yellow="%{$fg[yellow]%}"
+        color_red="%{$fg[red]%}"
+        color_reset="%{$reset_color%}"
 
-	if [ $percent -ge 80 ] ; then
-		color=$color_green;
-	elif [ $percent -ge 40 ] ; then
-		color=$color_yellow;
-	else
-		color=$color_red;
-	fi
-    end="%%  "
-    strt=""
-    if [ $percent -le 99 ] ; then
-        strt+=" "
+        if [ $percent -ge 80 ] ; then
+            color=$color_green;
+        elif [ $percent -ge 40 ] ; then
+            color=$color_yellow;
+        else
+            color=$color_red;
+        fi
+        end="%%  "
+        strt=""
+        if [ $percent -le 99 ] ; then
+            strt+=" "
+        fi
+        if [ $percent -le 9 ] ; then
+            strt+=" "
+        fi
+        BAT="($color$strt$percent$end$fg[red]%)"
     fi
-    if [ $percent -le 9 ] ; then
-        strt+=" "
-    fi
-	BAT=$color$strt$percent$end$fg[red]%
+
+
 # $PR_RED$PR_HBAR$PR_URCORNER\
     PROMPT='$PR_SET_CHARSET$PR_STITLE${(e)PR_TITLEBAR}\
-$PR_RED$PR_ULCORNER$PR_HBAR( $BAT )$PR_RED$PR_HBAR\
+$PR_RED$PR_ULCORNER$PR_HBAR$BAT$PR_RED$PR_HBAR\
 $PR_RED(\
 $PR_GREEN%$PR_PWDLEN<...<%~%<<\
 $PR_RED)`rvm_prompt_info || rbenv_prompt_info`$PR_RED\
