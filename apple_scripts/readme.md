@@ -1,4 +1,4 @@
-# useful apple scripts for adding to the finder
+# useful apple scripts to add to the finder window
 
 To use these, open "/Applications/Utilities/Script Editor.app", create a new document, copy and paste the code in.
 
